@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  htm_zu_sqlite:
+    build: .
+    container_name: htm_zu_sqlite
+    volumes:
+      - C:/Users/mlieberwirt/Desktop/HTM_zu_SQLite/jobs.db:/app/jobs.db             # SQLite-Datei auf Host ↔ Container
+      - //192.168.2.120/u/HTML:/app/daten     # HTM-Dateien von Windows-Netzwerkfreigabe
+      - ./daten:/app/daten
+    command: ["python", "job_watcher.py", "/mnt/netzwerk"]  # Startkommando mit Pfad als Argument
